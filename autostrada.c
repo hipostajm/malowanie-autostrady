@@ -59,6 +59,9 @@ void paintNode(uint low, uint high, Node* node, char mode){
       if(node->white_count != 0){
         node->left_child->white_count = node->left_child->high - node->left_child->low+1;
         node->right_child->white_count = node->right_child->high - node->right_child->low+1;
+      } else{
+        node->left_child->white_count = 0;
+        node->right_child->white_count = 0;
       }
     }
 
@@ -119,6 +122,8 @@ int main(){
       paintNode(l, h, node, 1);
     }
     arr[i] = node->white_count;
+    printf("\n\n%d\n", i);
+    printNode(node, 0);
   }
 
   for(uint i = 0; i<m; i++){
@@ -128,4 +133,3 @@ int main(){
   freeNodes(node);
   return 0;
 }
-
